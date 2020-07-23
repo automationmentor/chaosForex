@@ -1,0 +1,38 @@
+
+spring:
+  profiles:
+    active: chaos-monkey
+chaos:
+ monkey:
+  assaults:
+   level: 5
+   latencyRangeStart: 1000
+   latencyRangeEnd: 2000
+   latencyActive: true
+   exceptionsActive: false
+   killApplicationActive: true
+   restartApplicationActive: false
+  watcher:
+   restController: true
+   
+ribbon:
+  eureka:
+    enabled: true
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  ReadTimeout: 1000
+  
+logging:
+  level:
+    com.netflix.ribbon: DEBUG
+    com.netflix.hystrix: DEBUG
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 1000
+  hystrix:
+    enabled: false   
+    
